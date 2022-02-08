@@ -35,84 +35,50 @@
   <style>
     /* 前言 */
     .txt{
-      padding: 20px;
+      animation: movetoright 2s;
+    }
+    @keyframes movetoright {
+      0% {
+        transform: translateX(-500px);
+      }
+      100% {
+        transform: translateX(10px);
+      }
     }
     .introheader{
       color: #16df7e;
     }
-    @media screen and (min-width: 1400px){ /*1400以上*/
-      .intro .txt{
-        margin-top: -140px;
-        margin-left: 80px;
+    .img1{
+      animation: imgmovetoleft 1s;
+    }
+    @keyframes imgmovetoleft {
+      0% {
+        transform: translateX(-100px);
       }
-      .introwords{
-        width: 600px;
-      }
-      .pic1{
-        margin-left: 80px;
-      }
-      .pic2{
-        margin-top: 100px; 
-        margin-left: 140px;
+      100% {
+        transform: translateX(10px);
       }
     }
-    @media screen and (min-width: 1280px) and (max-width: 1399px){ /*1280-1399*/
-      .intro .txt{
-        margin-top: -160px;
-        margin-left: 40px;
+    .img2{
+      animation: movetoleft 1s;
+    }
+    @keyframes movetoleft {
+      0% {
+        transform: translateX(500px);
       }
-      .introwords{
-        width: 550px;
-      }
-      .pic1{
-        margin-left: 40px;
-      }
-      .pic2{
-        margin-top: 100px; 
-        margin-left: 110px;
+      100% {
+        transform: translateX(10px);
       }
     }
-    @media screen and (min-width: 1200px) and (max-width: 1279px){ /*1200-1279*/
-      .intro .txt{
-        margin-top: -170px;
-        margin-left: 70px;
-      }
-      .introwords{
-        width: 550px;
-      }
-      .pic1{
-        margin-left: 70px;
-      }
-      .pic2{
-        margin-top: 100px;
-        margin-left: 80px;
-      }
+    .down{
+      animation: updown 2s ease-in-out infinite alternate-reverse both;
     }
-    @media screen and (min-width: 992px) and (max-width: 1199px){ /*992-1199*/
-      .intro .txt{
-        margin-top: -220px;
-        margin-left: 30px;
+    @keyframes updown {
+      0% {
+        transform: translateY(10px);
       }
-      .introwords{
-        width: 450px;
-      }
-      .pic1{
-        margin-left: 30px;
-      }
-      .pic2{
-        margin-top: 100px;
-        margin-left: 30px;
-      }
-    }
-    @media screen and (min-width: 768px) and (max-width: 991px){ /*768-991*/
-      .intro .txt{
-        margin-top: -230px;
-      }
-      .introwords{
-        width: 330px;
-      }
-      .pic2{
-        margin-top: 100px;
+      100% {
+        transform: translateY(-10px);
       }
     }
     
@@ -124,7 +90,20 @@
     .card-header{
       font-weight: 500;
     }
-
+    .pricing-img{
+      animation: imgupdown 2s ease-in-out infinite alternate-reverse both;
+    }
+    @media screen and (min-width: 992px){ 
+      @keyframes imgupdown {
+        0% {
+          transform: translateY(65px);
+        }
+        100% {
+          transform: translateY(80px);
+        }
+      }
+    }
+    
     /* QA */
     .icon-help {
       font-size: 20px;
@@ -206,20 +185,27 @@
 
   <!-- ======= 前言 Section ======= -->
   <section id="hero intro">
-    <div class="container intro"> 
+    <div class="container intro d-flex justify-content-xl-center"> 
       <div class="row">
-        <div class="col-md-6 order-md-1">
-          <div class="pic">
-            <img src= "https://api.fnkr.net/testimg/600x360/00CED1/FFF/?text=img+1"  class="pic1 img-fluid">
+        <!-- 圖片1 +前言-->
+        <div class="col-lg-7 order-lg-1 col-md-12">
+          <div class="pic img1 d-flex justify-content-md-center justify-content-lg-start">
+            <img src= "https://api.fnkr.net/testimg/600x360/00CED1/FFF/?text=img+1"  class="img-fluid">
+          </div>
+          <div class="txt pt-4 d-flex flex-column justify-content-md-center px-md-5 px-lg-0">
+            <h1 class="introheader fw-bolder">彰師最佳選課小幫手</h1>
+            <h3 class="introwords">立即解鎖爌肉飯大學修課之旅 ！  
+              <p class="pt-2 down">
+                <a href="#about" class="down-animated btn-get-started scrollto"><i class="bi bi-chevron-down"></i></a>
+              </p>
+            </h3>
           </div>
         </div>
-        <div class="txt col-md-7 order-md-3">
-          <h1 class="introheader fw-bolder">彰師最佳選課小幫手</h1>
-          <h3 class="introwords pt-2">立即解鎖爌肉飯大學修課之旅 ！</h3>
-        </div>
-        <div class="col-md-6 order-md-2">
-          <div class="pic">
-            <img src= "https://api.fnkr.net/testimg/390x400/00CED1/FFF/?text=img+2"  class="pic2 img-fluid">
+      
+        <!-- 圖片2 -->
+        <div class="col-lg-5 order-lg-2 align-self-center d-flex justify-content-center justify-content-lg-end">
+          <div class="pic img2">
+            <img src= "https://api.fnkr.net/testimg/390x400/00CED1/FFF/?text=img+2"  class="img-fluid">
           </div>
         </div>
         
@@ -229,70 +215,130 @@
   
   <!-- <main id="main"> -->
     <!-- ======= 收費標準 Section ======= -->
-    <section id="about" class="about"> <!--白底-->
-      <div class="container">
-        <div class="section-title">
+    <section id="about" class="about" style="padding-top: 40px;"> <!--白底-->
+        <div class="section-title" style="padding-bottom: 10px;padding-top: 10px;">
           <span>Plans and Pricing</span>
           <h2>方案及價格</h2>
           <p></p>
         </div>
-        
-        <div class="card-group">
-          <div class="card pricing-img mx-4 border-0 order-2"> <!--img RWD有問題-->
-            <img src="https://api.fnkr.net/testimg/400x364/00CED1/FFF/?text=howtochoose" class="img-fluid" alt="...">
+      <div class="container">
+        <div class="row" style="padding-left: 40px;padding-right: 40px;">
+          <!-- 圖片 -->
+          <div class="col-lg-4 order-lg-2 order-sm-1 col-md-12 d-flex justify-content-center">
+              <div class="pricing-img mx-3 border-0" >
+                <img src="https://api.fnkr.net/testimg/400x364/00CED1/FFF/?text=howtochoose" class="img-fluid" alt="...">
+              </div>
           </div>
-          <div class="card pricing-card mx-4 border-0 order-1">
-            <div class="card-header fw-bolder fs-3" style="background-color: #ffffff; padding-top: 0px;">新鮮人方案 NT$0｜Semester</div>
-            <div class="card-body text-success">
-				<p class="card-text">
-                <li class="pt-1">推薦對象：彰師大學部新生 (註1)</li>
-                <li class="pt-1">查詢評價期間：上學期新生一階選課及開學日前三日</li>
-                <li class="pt-1">綁定類型：註冊後綁定一個LINE帳號</li>
-				<li class="pt-1">LINE評價查詢：有</li>
-                <li class="pt-1 ">網頁版評價查詢：無 (註2)</li>
-				<li class="pt-1">評價查詢則數：無上限</li>
-                <li class="pt-1">講座通知：無 (註2)</li>
 
-              </p>
-              <!-- <h5 class="card-title">Success card title</h5> -->
-
-            </div>
-			<div class="card-footer text-muted">
-              <p class="card-text">(註1) 此方案專為大一新生暑期選課設計</p>
-			  <p class="card-text">(註2) 表示未來即將提供的服務</p>		 	
-			</div>
+          <!-- 新鮮人方案 -->
+          <div class="col-lg-4 order-lg-1 order-sm-2 pt-3" style="padding-left: 0px;padding-right: 0px;">
+              <div class="card pricing-card mx-3 border-0" style="padding-top: 0px; padding-right: 0px; padding-left: 0px; padding-bottom: 16px;">
+                <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-white shadow-sm" style="background-color: #16df7e;">新鮮人優惠</span>
+                <div class=" fw-bolder fs-3" style="background-color: #ffffff; padding-top: 0px;">
+                  <h1 class="h1 font-weight-normal text-primary text-center mb-0">
+                  <span class="price" style="color: #16df7e;">$0</span><span class="h6 text-muted ml-2">/ Semester</span>
+                  </h1>
+                </div>
+    
+                <div class="card-body" style="padding-top: 15px; padding-bottom: 0px; padding-left: 15px;padding-right: 15px;">
+                  <table class="table" style="margin-bottom: 0px;">
+                    <tbody>
+                      <tr>
+                        <th scope="row">適用對象</th>
+                        <td>彰師大學部<strong style="color: #16df7e;">新生</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">查詢評價期間</th>
+                        <td><strong>上學期新生一階選課<br>及開學前三日</strong></td> 
+                      </tr>
+                      <tr>
+                        <th scope="row">綁定類型</th>
+                        <td>註冊後綁定<br>一個LINE帳號</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">LINE評價查詢</th>
+                        <td><strong>有</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">講座通知</th>
+                        <td><strong>無</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">網頁版查詢評價</th>
+                        <td><strong>無</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="border-0">評價查詢則數</th>
+                        <td class="border-0"><strong>期間內</strong>無上限</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
           </div>
-          <div class="card pricing-card mx-4 border-0 order-3">
-            <div class="card-header fw-bolder fs-3" style="background-color: #ffffff; padding-top: 0px;">試行優惠 NT$30｜Semester</div>
-            <div class="card-body text-success" style="padding-top: 0px; padding-bottom: 0px;">
-              <p class="card-text">
-                <li class="pt-1">推薦對象：彰師大學部舊生</li>
-                <li class="pt-1">查詢評價期間：不限</li>
-                <li class="pt-1">綁定類型：註冊後綁定一個LINE帳號</li>
-				<li class="pt-1">LINE評價查詢：有</li>
-                <li class="pt-1">網頁版評價查詢：有 (註1)</li>
-				<li class="pt-1">評價查詢則數：無上限</li>
-				<li class="pt-1">講座通知：有 (註1)</li>
-              </p>
 
-            </div>
-			<div class="card-footer text-muted">
-				<p class="card-text">(註1) 未來即將提供的服務</p>		 	
-			</div>
+          <!-- 試行優惠 -->
+          <div class="col-lg-4 order-lg-3 order-sm-3 pt-3" style="padding-left: 0px;padding-right: 0px;">
+              <div class="card pricing-card mx-3 border-0" style="padding-top: 0px; padding-right: 0px; padding-left: 0px; padding-bottom: 0px;">
+                <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-white shadow-sm" style="background-color: #16df7e;">試行優惠</span>
+                <div class=" fw-bolder fs-3" style="background-color: #ffffff; padding-top: 0px;">
+                  <h1 class="h1 font-weight-normal text-primary text-center mb-0">
+                  <span class="price" style="color: #16df7e;">$30</span><span class="h6 text-muted ml-2">/ Semester</span>
+                  </h1>
+                </div>
+    
+                <div class="card-body" style="padding-top: 15px; padding-bottom: 0px; padding-left: 15px;padding-right: 15px;">
+                  <table class="table" style="margin-bottom: 0px;">
+                    <tbody>
+                      <tr>
+                        <th scope="row">適用對象</th>
+                        <td>彰師大學部<strong style="color: #16df7e;">舊生</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">查詢評價期間</th>
+                        <td><strong style="color: #16df7e;">不限</strong></td> 
+                      </tr>
+                      <tr>
+                        <th scope="row">綁定類型</th>
+                        <td>註冊後綁定<br>一個LINE帳號</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">LINE評價查詢</th>
+                        <td><strong>有</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">講座通知</th>
+                        <td><strong>有</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">網頁版查詢評價</th>
+                        <td><strong>有</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="border-0">評價查詢則數</th>
+                        <td class="border-0"><strong style="color: #16df7e;">無上限</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer text-muted">
+                  <p class="card-text text-center">*未來即將提供的服務</p>		 	
+                </div>
+              </div>
           </div>
         </div>
-      </div>
+      </div>  
     </section>  
 
     <!-- ======= QnA Section ======= -->
     <section id="services" class="services section-bg"> <!--services灰底-->
       <div class="container">
         <div class="section-title">
-          <span>Q&A</span>
+          <span>Frequently Asked Questions</span>
           <h2>常見問題清單</h2>
           <p></p>
         </div>
-        <div class="row d-grid gap-3 ">
+        <div class="row d-grid gap-3 " style="padding-left: 42px;padding-right: 42px;">
           <!-- <div class="accordion"> accordion顯示長度 -->
             <div class="accordion-item border-0">
               <h2 class="accordion-header">
